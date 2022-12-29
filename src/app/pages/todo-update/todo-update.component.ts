@@ -14,17 +14,18 @@ export class TodoUpdateComponent implements OnInit {
   content:new FormControl(''),
   id:new FormControl(0)
 })
-id:number=0;
+idUrl:number=0;
   constructor(private todoService:TodoServiceService,private router:Router,private activatedRouted:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.id=Number( this.activatedRouted.snapshot.paramMap.get('id'))
-    this.todoService.getById(this.id).subscribe(x=>{
+    this.idUrl=Number( this.activatedRouted.snapshot.paramMap.get('id')) // url'deki id al 
+    this.todoService.getById(this.idUrl).subscribe(x=>{
       this.todoForm.get('content')?.setValue(x.content);
       this.todoForm.get('id')?.setValue(x.id);
-    })
+    }) // url'yi ilgili service metoduna gönder veriyi al ekrana yerleştir
   }
   update(){
+    // ekrandaki veriyi güncelle 
     this.todoService.update(this.todoForm.value as TodoUpdate).subscribe(x=> {
       if(x==true){
         this.router.navigateByUrl("todos")

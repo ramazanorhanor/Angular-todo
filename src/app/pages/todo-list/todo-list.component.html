@@ -2,7 +2,7 @@
     <div class="row">
         <div class="com-md-8 offset-md-2">
             <h2>Yapılackalar</h2>
-            <a [routerLink]="['/todos/add']" >Yapılacak İçerik Ekle </a>
+            <a [routerLink]="['/todo-add']" >Yapılacak İçerik Ekle </a>
             <table class=" table table-stripped">
                 <thead>
                     <tr>
@@ -20,8 +20,8 @@
                         <td><span>{{todo.content}}</span></td>
                         <td>{{todo.created | date:'short'}}</td>
                         <td><button (click)="delete(todo.id)" class="btn btn-danger">Sil</button></td>
-                        <a class="btn btn-succes mx-2" [routerLink]="['todo-update',todo.id]">update dışında </a>
-                        <a class="btn btn-succes mx-2" [routerLink]="['todo-update,todo.id']">update içinde </a>
+                        <a class="btn btn-succes mx-2" [routerLink]="['/todo-update/',todo.id]">update dışında </a>
+                        <!-- <a class="btn btn-succes mx-2" [routerLink]="['todo-update/,todo.id']">update içinde </a> -->
                     </tr>
                 </tbody>
             </table>
